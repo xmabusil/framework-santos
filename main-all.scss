@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond');
+
+//colori
+$yellow: #fad417;
+$white: #faf8eb;
+$grey-black: #3c3c3c;
+$body: #888888;
+
+//size
+$root: 16px; //body-root size
+
+//template color-background
+$background: #fff;
+$black-transparent: rgba(0,0,0,0.7);
+$white-transparent: rgba(255, 255, 255, 0.9);
+
+//fonts
+$font-quicksand:'Quicksand', sans-serif;
+$font-ebgaramond:'EB Garamond', serif;
+
+//DEVICE
+$desktop-big: "min-width:1025px";
+$desktop: "min-width:769px";
+$tablet: "max-width:980px";
+$smart: "max-width:768px";
+$smart-skills: "max-width: 680px";
+$smart-small: "max-width: 480px";
+
+//FLEXBOX
+@mixin flexbox($align:unset, $justify:unset, $direction:unset, $wrap:unset){
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display:-webkit-flex;
+    display:flex;
+
+    -webkit-box-align: $align;
+    -webkit-align-items: $align;
+    -ms-flex-align: $align;
+    align-items:$align;
+
+    -webkit-box-pack: $justify;
+    -webkit-justify-content: $justify;
+    -ms-flex-pack: $justify;
+    justify-content: $justify;
+
+    -webkit-flex-direction: $direction;
+    -moz-flex-direction: $direction;
+    -ms-flex-direction: $direction;
+    flex-direction: $direction;
+
+    -webkit-flex-wrap: $wrap;
+    -moz-flex-wrap: $wrap;
+    -ms-flex-wrap: $wrap;
+    flex-wrap: $wrap;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+     -moz-box-flex: $values;
+      -webkit-flex: $values;
+          -ms-flex: $values;
+              flex: $values;
+}
+
+//transition
+@mixin transition($args) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+/********usato in menu hamburger************/
+
+// transform
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// Transform Origin
+@mixin transform-origin ($origin) {
+  -webkit-transform-origin: $origin;
+  -moz-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+//Animation
+@mixin animation($animation) {
+  -o-animation: $animation;
+  -moz-animation: $animation;
+  -webkit-animation: $animation;
+  animation: $animation;
+}
+
+//flexgrid
+@mixin flexgrid($cols, $margin) {
+  $width: (100% / $cols);
+  $calc-margin: (($margin * $cols) - $margin) / $cols;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &:after {
+    flex: auto;
+    margin: 0 auto;
+    content: "";
+  }
+  >* {
+    width: calc( #{$width} - #{$calc-margin} );
+    margin-left: $margin / 2;
+    margin-right: $margin/ 2;
+    &:nth-child(1) {
+      margin-left: 0;
+    }
+    &:nth-child(#{$cols}n) {
+      margin-right: 0;
+    }
+    &:nth-child(#{$cols}n + 1) {
+      margin-left: 0;
+    }
+  }
+}

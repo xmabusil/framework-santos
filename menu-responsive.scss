@@ -1,0 +1,68 @@
+@import "main-all.scss";
+
+/* Icon menu responsive */
+
+#nav-icon4 {
+    width: 35px;
+    height: 35px;
+    @include transform(rotate(0deg));
+    @include transition(.5s ease-in-out);
+    cursor: pointer;
+
+    span {
+      display: block;
+      margin-top: 7px;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: $white;
+      //@media($smart){background: $grey-black;}
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      @include transform(rotate(0deg));
+      @include transition(.25s ease-in-out);
+      &.change-color-hamburger{
+        background: $grey-black;
+      }
+    }
+
+    & span:nth-child(1) {
+        top: 0px;
+        @include transform-origin(left center)
+    }
+
+    & span:nth-child(2) {
+      top: 10px;
+      @include transform-origin(left center)
+    }
+    //open
+    &.open{
+        span{
+            background: $yellow;
+        }
+    }
+    & span:nth-child(3) {
+      top: 20px;
+      @include transform-origin(left center)
+    }
+
+    &.open span:nth-child(1) {
+      @include transform(rotate(45deg));
+      top: 0px;
+      left: 10px;
+    }
+
+    &.open span:nth-child(2) {
+      width: 0%;
+      opacity: 0;
+      left: 10px;
+    }
+
+    &.open span:nth-child(3) {
+      @include transform(rotate(-45deg));
+      top: 25px;
+      left: 10px;
+    }
+}
+

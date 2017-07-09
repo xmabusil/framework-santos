@@ -1,0 +1,365 @@
+@import "main-all.scss";
+/* all page definizione*/
+html,body{
+  padding:0;
+  margin:0;
+  font-family: $font-quicksand;
+  font-size:$root;
+  font-weight:normal;
+  height:100%;
+  background: #000;
+}
+a{
+    text-decoration: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6{
+  margin-bottom:0;
+  margin-top:0;
+  font-family: $font-quicksand;
+  font-weight:normal;
+  //line-height: 1.6em;
+  line-height: 1.375em;
+  color: $grey-black;
+}
+h1{
+    //font-size: 3em;
+    font-size: 2.625em;
+}
+h2{
+    //font-size: 2.25em;
+    font-size: 1.938em;
+}
+//section title(about, skill, portfolio, contact)
+h3{
+    //font-size: 1.75em;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    color: $yellow;
+}
+
+/* all page definizione end*/
+
+//width max
+.inner{
+    width:90%;
+    margin:auto;
+    max-width:1200px;
+}
+
+/* NAVIGATION */
+#logo a{
+    font-size: 1.625em;
+    color: $white;
+    font-weight: bold;
+}
+.menu ul li{
+  display:inline-block;
+  padding-left: 30px;
+  a{
+    font-size: 1em;
+    color: $white;
+    font-weight: bold;
+  }
+  a:hover{
+    color: $yellow !important;
+  }
+  a.active{
+    color: $yellow !important;
+  }
+}
+nav ul li {
+    list-style-type: none;
+}
+
+nav{
+    
+    //@include transition(background-color 500ms linear);
+    .inner{
+      @include flexbox(center, space-between);
+      height:100px;
+      @include transition(0.5s ease);
+    }
+    &.change-background{
+        background-color: $background;
+        border-bottom: 0.5px solid #e8e8e8;
+        .inner{
+            height: 60px;
+        }
+        #logo a{
+            color: $grey-black;
+        }
+        .menu ul li a{
+            color: $grey-black;
+        }
+    }
+}
+#navToggle{
+    display: none;
+}
+nav{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+/* END NAVIGATION */
+
+.content{
+    padding-top: 100px;
+    .inner{
+        @include flexbox(center, center);
+        height: 100%;
+    }
+}
+
+
+/* FOOTER */
+footer{
+    height: 100px;
+    background: $background;
+    .inner{
+        @include flexbox(center, space-between);
+        height: 100%;
+        .left p{
+            font-size: 0.875em;
+        }
+        .fa-linkedin-square{
+            font-size:20px;
+            color: $grey-black;
+            &:hover{
+            color: $yellow;
+            }
+        }
+    }
+}
+/* END FOOTER */
+
+/*------content flexgrid--*/
+.flexgrid {
+    .article{
+        background-color: $background;
+        padding: 30px;
+        //min-height: 150px;
+        //height: 450px;
+        margin-bottom: 30px;
+        box-shadow: -2px 2px 10px 0px rgba(68, 68, 68, 0.4);
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+    }
+}
+//articoli -responsive
+.flexgrid {
+    .view-content {
+        @media ($smart-small) {
+            @include flexbox();
+            @include flexgrid(1, 15px);;
+        }
+        @media screen and (min-width: 481px) and ($smart) {
+            @include flexbox();
+            @include flexgrid(2, 15px);
+        }
+        @media screen and (min-width: 769px) {
+            @include flexbox();
+            @include flexgrid(3, 30px);
+        }
+    }
+}
+/*------content flexgrid end-----*/
+
+/*---------------------RESPONISVE----------------*/
+@media only screen and ($smart) {
+    .inner{
+        width: 100%;
+        margin:0;
+        max-width: none;
+        padding: 0 15px 0 15px;
+    }
+    /*--navbar--*/
+    #logo a{
+        font-size: 1.625em;
+        color: $white;
+        &.black{
+            color: $grey-black;
+        }
+    }
+    nav{
+        .inner{
+            &.change-inner{
+                @include transition(0.5s ease);
+
+            }
+            &.white{
+                background: $background;
+            }
+        }
+    }
+    .menu{
+        display: none;
+        position: absolute;
+        margin-top: 117px;
+        left: 0;
+        width: 100%;
+        @include transition(0.5s ease);
+        &.change-menu{
+            margin-top: 97px;
+            background: $background;
+        }
+        &.white{
+            background: $background;
+        }
+    }
+    #navToggle{
+        display: block;
+        position: absolute;
+        right: 15px;
+    }
+    .menu ul{
+        li {
+            display: block;
+            padding-left:15px;
+            margin: 15px 0 0 0;
+            a{
+                color:$grey-black;
+            }
+        }
+        li:first-child{
+            margin:0;
+        }
+        li:last-child{
+           padding-bottom: 15px;
+        }
+    }
+    /* -- video text img --*/
+    #overlay { 
+        background-image: url("../images/pc.jpeg");
+        background-size: cover;
+        .inner{
+            padding: 0;
+        }
+        .text-header{
+            text-align: center;
+            background: $black-transparent;
+            padding-top: 100px;
+            h1{
+                padding: 0 15px 0 15px;
+            }
+            h2{
+                padding: 15px 15px 0 15px;
+            }
+        }
+    }
+    #hero-pic{height:0;}
+    /*--about--*/
+    .about .inner{
+        width:100%;
+    }
+    /*--skill--*/
+    .skill .inner #content {
+        max-width: inherit;
+        margin: auto;
+        width: 100%;
+    }
+    .skill {
+        .circle{
+            width: 80px;
+            height: 80px;
+        }
+        .arrow:before{
+            width: 18px;
+        }
+        //hover div efect in another div
+        .circle:hover + .arrow:before{
+            width: 50px;
+        }
+        .myskills{
+            padding-bottom: 30px;
+        }
+    }
+
+}
+
+/* only for skills */
+@media only screen and ($smart-skills){
+    .skill{
+        .table-skills{
+            @include flexbox(flex-start, unset, column);
+        }
+        background-position: 85% 85%;
+        .myskills{
+            width: 100%;
+            .dropdown-menu{
+                width: 100%;
+            }
+        }
+    }
+}
+
+/*-------MOBILE-------*/
+@media only screen and ($smart-small) {
+    /*--skill--*/
+    .skill{
+        .circle{
+            background: transparent;
+            color:$white;
+            margin:0;
+            &:hover{
+                background: transparent;
+            }
+        }
+    }
+    /*--contact--*/
+    .contact form{
+        width:100%;
+    }
+}
+
+/*---------Desktop---------------*/
+@media only screen and ($desktop) {
+    .hidden-desktop { display:none !important; }
+}
+
+/*---------------------RESPONISVE END----------------*/
+
+/* -------back up -------*/
+.scroll-top-wrapper {
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    text-align: center;
+    z-index: 99999999;
+    background-color: $body;
+    color: $white-transparent;
+    width: 50px;
+    height: 48px;
+    line-height: 48px;
+    right: 30px;
+    bottom: 100px;
+    padding-top: 2px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    @include transition(all 0.5s ease-in-out);
+}
+.hide{display:none;}
+.scroll-top-wrapper:hover {
+    background-color: $black-transparent;
+    color: $white-transparent;
+}
+.scroll-top-wrapper.show {
+    visibility:visible;
+    cursor:pointer;
+    opacity: 1.0;
+}
+.scroll-top-wrapper i.fa {
+    line-height: inherit;
+}
